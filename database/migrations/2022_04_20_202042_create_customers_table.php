@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('address');
             $table->unsignedBigInteger('user_id')->unsigned(); 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('action_id')->unsigned(); 
+            $table->foreign('action_id')->references('id')->on('customer_actions');
             $table->timestamps();
         });
     }
