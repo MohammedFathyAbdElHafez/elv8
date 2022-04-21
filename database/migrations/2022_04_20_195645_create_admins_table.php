@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->enum('position',['super_admin','moderator']);
             $table->unsignedBigInteger('user_id')->unsigned(); 
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
