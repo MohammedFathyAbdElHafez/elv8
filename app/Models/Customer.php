@@ -21,11 +21,17 @@ class Customer extends Model
         'city',
         'postal_code',
         'address',
+        'action_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function action()
+    {
+        return $this->belongsTo(customerActions::class, 'action_id');
     }
 
     public function employees()
