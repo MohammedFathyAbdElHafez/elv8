@@ -15,7 +15,7 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
 
             $user = User::factory()->create();
 
@@ -25,10 +25,22 @@ class EmployeeSeeder extends Seeder
 
             $user->givePermissionTo('create customers');
 
-            $employee = Employee::create([
+            $createEmployee = Employee::create([
                 'starting_date' => '2020-10-10',
                 'user_id' => $lastId,
             ]);
+
+            $employeeId = $createEmployee->id;
+
+            $a = rand(1, 10);
+            $b = rand(1, 10);
+            $c = rand(1, 10);
+            if ($a != $b && $b != $c) {
+                $attachedIds = [$a, $b, $c];
+                $employee = Employee::find($employeeId);
+                $employee->customers()->sync($attachedIds);
+            }
+
         }
     }
 }
