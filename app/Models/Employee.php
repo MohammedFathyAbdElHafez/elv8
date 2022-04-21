@@ -26,6 +26,6 @@ class Employee extends Model
 
     public function customers()
     {
-        return $this->belongsToMany(Employee::class, 'customer_employee', 'customer_id', 'employee_id');
+        return $this->belongsToMany(Employee::class, 'customer_employee', 'employee_id', 'customer_id');
     }
 }
