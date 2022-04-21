@@ -36,6 +36,7 @@ class AdminSeeder extends Seeder
         $user->syncPermissions(Permission::all());
 
         $admin = Admin::create([
+            'position' => 'super_admin',
             'user_id' => $lastId,
         ]);
 
