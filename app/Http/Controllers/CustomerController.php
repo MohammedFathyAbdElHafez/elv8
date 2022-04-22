@@ -10,6 +10,7 @@ use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Action;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -208,5 +209,32 @@ class CustomerController extends Controller
         $customer->employees()->detach($customer);
         $customer->delete();
         return redirect('customers');
+    }
+
+
+
+    /**
+     * getCustomerDetails.
+     *
+     * @param  \App\Models\Customer  $customer
+     * @return \Illuminate\Http\Response
+     */
+    public function getCustomerDetails()
+    {
+        $user = Auth::user();
+        $customer = Customer::with('employees', 'action')->where('user_id', $user['id'])->get()->all();
+
+        $customer = array_map(function ($item) use ($user) {
+            $action = $item->action;
+
+            $item->action_name = $action['action_name'];
+
+            $item->name = $user['name'];
+            $item->email = $user['email'];
+
+            return $item;
+        }, $customer);
+
+        return view('customer.show', ['customer' => $customer]);
     }
 }

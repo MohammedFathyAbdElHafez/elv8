@@ -105,7 +105,13 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        $user = User::findOrFail($employee['user_id']);
+
+        $user['id'] = $employee['id'];
+        $user['starting_date'] = $employee['starting_date'];
+
+        return view('employee.show', ['employee' => $user]);
+
     }
 
     /**
