@@ -31,7 +31,7 @@ class Customer extends Model
 
     public function action()
     {
-        return $this->belongsTo(customerActions::class, 'action_id');
+        return $this->belongsTo(customerActions::class, 'action_id')->select(['id', 'action_name']);
     }
 
     public function employees()
