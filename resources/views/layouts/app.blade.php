@@ -48,6 +48,15 @@
                             <a class="nav-link" href="{{ route('customers.index') }}">{{ __('Customers') }}</a>
                         </li>
                         @endhasanyrole
+
+                        @role('customer')
+                        <li class="nav-item">
+
+                            <a href="{{ url('/customer/details') }}" class="btn btn-primary" role="button">{{ __('Show Customer details') }}</a>
+
+                        </li>
+
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->

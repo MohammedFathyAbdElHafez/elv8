@@ -32,6 +32,7 @@
                                 <th scope="col">fullName</th>
                                 <th scope="col">Email Address</th>
                                 <th scope="col">starting_date</th>
+                                <th scope="col">Show</th>
                                 <th scope="col">edit</th>
                                 <th scope="col">delete</th>
 
@@ -44,6 +45,10 @@
                                 <td>{{ $employee->name }}</td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->starting_date }}</td>
+                                <td>
+                                    <a href="{{ route('employees.show',$employee->id) }}" class="btn btn-secondary" role="button">{{ __('Show Employee') }}</a>
+                                </td>
+
                                 <td>
                                     <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary" role="button">{{ __('Edit') }}</a>
                                 </td>
