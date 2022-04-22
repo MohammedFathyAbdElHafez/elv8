@@ -16,6 +16,9 @@ record the results of these actions.
 1. php artisan migrate
 1. php artisan db:seed
 1. php artisan serve 
+1. use this credentials to sign as an admin:
+   - email: admin@admin.com
+   - password:  password 
 
 ## Authors
 - **[Mohammed Fathy](https://www.linkedin.com/in/mohamed-fathy/)**
