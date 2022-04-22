@@ -23,3 +23,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/all-users', [App\Http\Controllers\UserController::class, 'index']);
 
+Route::resource('/employees', App\Http\Controllers\EmployeeController::class);
+
+Route::resource('/customers', App\Http\Controllers\CustomerController::class);
+
+
+
