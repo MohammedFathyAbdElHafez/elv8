@@ -35,48 +35,58 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
+                        @role('admin')
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ url('all-users') }}">{{ __('Users') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('employees.index') }}">{{ __('Employees') }}</a>
+                        </li>
+                        @endrole
+                        @hasanyrole('admin|employee')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('customers.index') }}">{{ __('Customers') }}</a>
+                        </li>
+                        @endhasanyrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <!-- Authentication Links -->
                     <ul class="navbar-nav ms-auto">
-                    @guest
+                        @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
-                        @if (Route::has('register'))
+                        <!--                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                        @endif
+                        @endif -->
                         @else
-                        
+
                         <li class="nav-item">
 
-                    <div class="dropdown show">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </div>
-                    </li>
-                    
-                    
-                    
-                    @endguest
-                </ul>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        @endguest
+                    </ul>
 
                 </div>
             </div>
