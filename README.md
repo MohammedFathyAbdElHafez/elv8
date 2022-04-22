@@ -18,7 +18,7 @@ record the results of these actions.
 1. php artisan serve 
 1. use this credentials to sign as an admin:
    - email: admin@admin.com
-   - password:  password 
+   - password:  secret 
 
 ## Authors
 - **[Mohammed Fathy](https://www.linkedin.com/in/mohamed-fathy/)**
