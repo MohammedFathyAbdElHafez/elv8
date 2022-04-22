@@ -10,13 +10,13 @@
                 <ul style="list-style-type:none;">
                     <li>
                         @role('admin')
-                        <button type="button" class="btn btn-primary" onclick="{{ url('create/employee') }}">{{ __('Create Employee') }} </button>
+                        <a href="{{ route('employees.create') }}" class="btn btn-primary" role="button">{{ __('Create Employee') }}</a>
                         @endrole
                     </li>
 
                     <li>
                         @hasanyrole('admin|employee')
-                        <button type="button" class="btn btn-primary" onclick="{{ url('create/customer') }}">{{ __('Create Customer') }}</button>
+                        <a href="{{ route('customers.create') }}" class="btn btn-primary" role="button">{{ __('Create Customer') }}</a>
                         @endhasanyrole
                     </li>
 
