@@ -27,5 +27,9 @@ Route::resource('/employees', App\Http\Controllers\EmployeeController::class);
 
 Route::resource('/customers', App\Http\Controllers\CustomerController::class);
 
+Route::get('/customer/details', [App\Http\Controllers\CustomerController::class, 'getCustomerDetails']);
+
+
+
 
 
